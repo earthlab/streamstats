@@ -14,17 +14,16 @@ class WatershedFinder(object):
     def query(self, state, lon, lat):
         """Query a spatial point, finding its watershed.
 
-        Find the polygon representation of the watershed containing
-        a spatial point.
+        Find the polygon of the watershed containing a spatial point.
 
         Args:
-            state (str): Two character state code for the state
-                containing the point, e.g., "CA" for California.
+            state (str): Two character state code, e.g. "CA" for California.
             lon (float): Longitude of point in decimal degrees.
             lat (float): Latitude of point in decimal degrees.
 
         Returns:
             GeoJSON of watershed that contains the query point.
+
         """
         payload = {
             'rcode': state,

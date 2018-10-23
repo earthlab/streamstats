@@ -1,5 +1,5 @@
 Welcome to StreamStats's documentation!
-======================================
+=======================================
 
 .. toctree::
    :maxdepth: 2
