@@ -20,13 +20,13 @@ Python package for interfacing with the USGS StreamStats API.
 
 
 * Free software: MIT license
-* Documentation: https://streamstats.readthedocs.io.
+* Documentation: https://streamstats-python.readthedocs.io.
 
 
 Features
 --------
 
-* TODO
+* Get the GeoJSON of the watershed containing a spatial point in the U.S.
 
 Credits
 -------
