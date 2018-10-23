@@ -9,8 +9,8 @@ StreamStats
 .. image:: https://img.shields.io/travis/mbjoseph/streamstats.svg
         :target: https://travis-ci.org/mbjoseph/streamstats
 
-.. image:: https://readthedocs.org/projects/streamstats/badge/?version=latest
-        :target: https://streamstats.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/streamstats-python/badge/?version=latest
+        :target: https://streamstats-python.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 
