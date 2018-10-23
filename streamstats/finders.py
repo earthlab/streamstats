@@ -16,14 +16,13 @@ class WatershedFinder(object):
 
         Find the polygon of the watershed containing a spatial point.
 
-        Args:
-            state (str): Two character state code, e.g. "CA" for California.
-            lon (float): Longitude of point in decimal degrees.
-            lat (float): Latitude of point in decimal degrees.
-
-        Returns:
-            GeoJSON of watershed that contains the query point.
-
+        :param state: Two character state code, e.g. "CA" for California.
+        :type state: string
+        :param lon: Longitude of point in decimal degrees.
+        :type lon: float
+        :param lat: Latitude of point in decimal degrees.
+        :type lat: float
+        :rtype: dict containing watershed data
         """
         payload = {
             'rcode': state,
@@ -37,4 +36,4 @@ class WatershedFinder(object):
         }
         r = requests.get(self.baseurl, params=payload)
         r.raise_for_status()  # raises errors early
-        return r
+        return r.json()
