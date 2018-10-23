@@ -4,7 +4,10 @@ import streamstats
 
 
 class WatershedFinder(object):
-    """A watershed finder for spatial points."""
+    """A watershed finder for spatial points.
+
+    Find the watershed that contains a point in the United States.
+    """
     def __init__(self):
         self.baseurl = "".join([streamstats.base_url, "watershed.geojson"])
 
@@ -21,7 +24,7 @@ class WatershedFinder(object):
             lat (float): Latitude of point in decimal degrees.
 
         Returns:
-            GeoDataFrame of watershed that contains the query point.
+            GeoJSON of watershed that contains the query point.
         """
         payload = {
             'rcode': state,
