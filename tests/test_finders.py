@@ -6,12 +6,11 @@
 from streamstats import finders
 
 
-def test_WatershedFinder():
-    # check that we get GeoJSON for valid requests
-    f = finders.WatershedFinder()
-    r = f.query(state='NY', lon=-74.524, lat=43.939)
-    r_keys = r.keys()
-    assert 'workspaceID' in r_keys
-    assert 'featurecollection' in r_keys
-    assert 'parameters' in r_keys
-    assert 'messages' in r_keys
+def test_find_watershed():
+    """Verify that the JSON response contains expected keys."""
+    resp = finders.find_watershed(state='NY', lon=-74.524, lat=43.939)
+    resp_keys = resp.keys()
+    assert 'workspaceID' in resp_keys
+    assert 'featurecollection' in resp_keys
+    assert 'parameters' in resp_keys
+    assert 'messages' in resp_keys

@@ -5,4 +5,5 @@
 __author__ = """Maxwell B. Joseph"""
 __email__ = 'maxwell.b.joseph@colorado.edu'
 __version__ = '0.1.1'
-base_url = "https://streamstats.usgs.gov/streamstatsservices/"
+
+BASE_URL = "https://streamstats.usgs.gov/streamstatsservices/"
