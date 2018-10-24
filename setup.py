@@ -11,7 +11,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+requirements = ['requests']
 
 setup_requirements = ['pytest-runner', ]
 
@@ -33,7 +33,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    description="Python package for interfacing with the USGS StreamStats API.",
+    description="Python package for using the USGS StreamStats API.",
     install_requires=requirements,
     license="MIT license",
     long_description=readme + '\n\n' + history,
