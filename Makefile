@@ -50,8 +50,9 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
 
-lint: ## check style with flake8
+lint: ## check style with flake8 and pylint
 	flake8 streamstats tests
+	pylint streamstats tests
 
 test: ## run tests quickly with the default Python
 	py.test
