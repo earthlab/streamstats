@@ -4,7 +4,7 @@
 """Tests for streamstats.finders."""
 
 from streamstats import finders
-
+import requests
 
 def test_find_watershed():
     """Verify that the JSON response contains expected keys."""

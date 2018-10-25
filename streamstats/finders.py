@@ -4,7 +4,6 @@
 import requests
 import streamstats
 
-
 def find_watershed(state, lon, lat):
     """Find the watershed that contains a point
 
