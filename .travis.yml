@@ -6,9 +6,13 @@ python:
 matrix:
   include:
     - python: 3.6
-      env: TOXENV=lint
+      env: TOXENV=flake8
+    - python: 3.6
+      env: TOXENV=pylint
+
 install: pip install -U tox-travis
 script: tox
+
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
