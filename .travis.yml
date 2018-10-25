@@ -6,7 +6,7 @@ python:
 matrix:
   include:
     - python: 3.6
-      env: TOXENV=flake8
+      env: TOXENV=lint
 install: pip install -U tox-travis
 script: tox
 deploy:
