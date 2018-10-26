@@ -13,6 +13,9 @@ StreamStats
         :target: https://streamstats-python.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
+.. image:: https://codecov.io/gh/mbjoseph/streamstats/branch/master/graph/badge.svg
+        :target: https://codecov.io/gh/mbjoseph/streamstats
+
 
 
 
