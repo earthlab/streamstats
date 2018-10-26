@@ -8,8 +8,8 @@ Finding the watershed that contains a point
 Given a spatial point in the U.S. defined by a lat/lon location and a state,
 the `WatershedFinder` class can be used to find the watershed that contains
 that point.
-First, we define a watershed finder object that can be queried with a two
-character state code, and longitude/latitude values.
+First, we define a watershed finder object that can be queried with 
+longitude/latitude values.
 The `finders.find_watershed` function returns the JSON response from the `USGS
 StreamStats API <https://streamstats.usgs.gov/docs/streamstatsservices/>`_.
 
