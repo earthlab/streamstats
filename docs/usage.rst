@@ -15,4 +15,4 @@ StreamStats API <https://streamstats.usgs.gov/docs/streamstatsservices/>`_.
 
     from streamstats import finders
 
-    res = finders.find_watershed(state='NY', lon=-74.524, lat=43.939)
+    res = finders.find_watershed(lon=-74.524, lat=43.939)
