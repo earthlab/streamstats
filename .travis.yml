@@ -13,9 +13,6 @@ matrix:
 install: pip install -U tox-travis
 script: tox
 
-after_success:
-- codecov
-
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
