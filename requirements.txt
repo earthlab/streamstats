@@ -1,2 +1,2 @@
 geopy==1.17.0
-requests
+requests==2.20.0
