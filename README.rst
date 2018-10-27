@@ -6,15 +6,15 @@ StreamStats
 .. image:: https://img.shields.io/pypi/v/streamstats.svg
         :target: https://pypi.python.org/pypi/streamstats
 
-.. image:: https://img.shields.io/travis/mbjoseph/streamstats.svg
-        :target: https://travis-ci.org/mbjoseph/streamstats
+.. image:: https://img.shields.io/travis/earthlab/streamstats.svg
+        :target: https://travis-ci.org/earthlab/streamstats
 
 .. image:: https://readthedocs.org/projects/streamstats-python/badge/?version=latest
         :target: https://streamstats-python.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://codecov.io/gh/mbjoseph/streamstats/branch/master/graph/badge.svg
-        :target: https://codecov.io/gh/mbjoseph/streamstats
+.. image:: https://codecov.io/gh/earthlab/streamstats/branch/master/graph/badge.svg
+        :target: https://codecov.io/gh/earthlab/streamstats
 
 
 
