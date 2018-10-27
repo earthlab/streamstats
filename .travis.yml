@@ -21,5 +21,5 @@ deploy:
     secure: dEGiqmlr6Pe4ivZmhOHTRQMpe72t4sCYhECDTtdtgDpLeWVunjAlXNc5egjhQ3agDK7CZL8kQT1alGjo297kfr+Pg0UKGERGHjn90wnv30bORO2cVObYGNJD4/jLntQRad/SfmX2ZxVxKzV0/bexRuR9JL2MUuQ1aoH6XNskjOtqz+2GM53FiE9xUG4fmne9nKsjdSyo8V8sKXtelkcubI9G3hR0KAOizypHfFKo/Rd4HrZextOdHq6NZ0Sv/bih1Y6vxrrmgpZqUSzspXqa62W8dVkR+g9reb6MRIup9sb6geYSgON9MwXlXmFI/0BFNBVj3+HZHMUGOVNwvWv68HQemk0nK+x9wEulXp8U1rRu7uHsUYahAsIvd/pjKyUk8Vv+9ioHfqRBCtnNvz56+6d2KRblBqFI92j3//98NyC0wgKqO6TEim0RM5DU+p76LmgpHF9OOwRZJpy1ZHz+d4JKRJ3drce0JuWbMBJou2X5XjfrZOf+rgCnjFKCrZENdH5EgDZTqS/0BfVMwvgh057U1uDMHWoaf8yVncWpqTRhlNTCcJbPpvQ9ujhkoLp1N5xgSddNonVau0s5PUsMkDyCzbcpxSlvuHPlqhuy/6a51GIYqs6XMqL0+TbCWSbBx2RKKQ2SYu00DJ/Y7BcP7xXknsarXk1neraT/HD5FoM=
   on:
     tags: true
-    repo: mbjoseph/streamstats
+    repo: earthlab/streamstats
     python: 3.6
