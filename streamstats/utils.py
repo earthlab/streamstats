@@ -1,49 +1,31 @@
 # -*- coding: utf-8 -*-
-"""Functionality for finding watershed information for specific locations."""
+"""Utility functions for streamstats."""
 
-import requests
 import geopy
-import streamstats
 
 
-def find_watershed(lon, lat):
-    """Find the watershed that contains a point
-
-    :param lon: Longitude of point in decimal degrees.
-    :type lon: float
-    :param lat: Latitude of point in decimal degrees.
-    :type lat: float
-    :rtype: dict containing watershed data
-    """
-    baseurl = "".join([streamstats.BASE_URL, "watershed.geojson"])
-    payload = {
-        'rcode': find_state(lon, lat),
-        'xlocation': lon,
-        'ylocation': lat,
-        'crs': 4326,
-        'includeparameters': True,
-        'includeflowtypes': False,
-        'includefeatures': True,
-        'simplify': False
-    }
-    response = requests.get(baseurl, params=payload)
-    response.raise_for_status()  # raises errors early
-    return response.json()
-
-
-def find_state(lon, lat):
-    """Find the U.S. state that contains a point
-
-    :param lon: Longitude of point in decimal degrees
-    :type lon: float
+def find_address(lat, lon):
+    """Find the address associated with a lat/lon pair.
     :param lat: Latitude of point in decimal degrees
     :type lat: float
-    :rtype: string of the state code (e.g., CO for Colorado)
+    :param lon: Longitude of point in decimal degrees
+    :type lon: float
+    :rtype: dictionary containing address data
     """
-    state_locator = geopy.geocoders.Nominatim(user_agent='streamstats')
-    location_info = state_locator.reverse(", ".join([str(lat), str(lon)]))
+    locator = geopy.geocoders.Nominatim(user_agent='streamstats')
+    location_info = locator.reverse(", ".join([str(lat), str(lon)]))
     address = location_info.raw['address']
-    assert address['country'] == 'USA', 'Point must be in U.S.'
+    assert address['country'] == 'USA', 'Point must be in US (50 states)'
+    return address
+
+
+def find_state(address):
+    """Find the U.S. state that contains an address
+
+    :param address: An address found by ``find_address``
+    :type address: dict
+    :rtype: string of the state code (e.g., "CO" for Colorado)
+    """
     state_code = US_STATE_ABBREV[address['state']]
     return state_code
 
@@ -57,6 +39,7 @@ US_STATE_ABBREV = {
     'Colorado': 'CO',
     'Connecticut': 'CT',
     'Delaware': 'DE',
+    'District Of Columbia': 'DC',
     'Florida': 'FL',
     'Georgia': 'GA',
     'Hawaii': 'HI',
@@ -98,5 +81,5 @@ US_STATE_ABBREV = {
     'Washington': 'WA',
     'West Virginia': 'WV',
     'Wisconsin': 'WI',
-    'Wyoming': 'WY',
+    'Wyoming': 'WY'
 }
