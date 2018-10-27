@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Top-level package for StreamStats."""
 
-from .watershed import Watershed  # flake8: noqa
+from .watershed import Watershed  # noqa
 
 __author__ = """Maxwell B. Joseph"""
 __email__ = 'maxwell.b.joseph@colorado.edu'
