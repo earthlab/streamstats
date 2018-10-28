@@ -10,6 +10,6 @@ the `Watershed` class can be used to find the watershed that contains
 that point using the `USGS
 StreamStats API <https://streamstats.usgs.gov/docs/streamstatsservices/>`_.
 
-    from streamstats import Watershed
-
-    res = Watershed(lat=43.939, lon=-74.524)
+    >>> from streamstats import Watershed
+    >>> Watershed(lat=43.939, lon=-74.524)
+    Watershed object with HUC8: 04150305, containing lat/lon: (43.939, -74.524)
