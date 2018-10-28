@@ -4,10 +4,18 @@ streamstats package
 Submodules
 ----------
 
-streamstats.finders module
---------------------------
+streamstats.utils module
+------------------------
 
-.. automodule:: streamstats.finders
+.. automodule:: streamstats.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+streamstats.watershed module
+----------------------------
+
+.. automodule:: streamstats.watershed
     :members:
     :undoc-members:
     :show-inheritance:
