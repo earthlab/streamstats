@@ -14,6 +14,9 @@ def find_address(lat, lon):
     """
     locator = geopy.geocoders.Nominatim(user_agent='streamstats')
     location_info = locator.reverse(", ".join([str(lat), str(lon)]))
+    no_result_found = location_info[0] is None
+    if no_result_found:
+        raise ValueError('No results found!')  # make this better
     address = location_info.raw['address']
     assert address['country'] == 'USA', 'Point must be in US (50 states)'
     return address
