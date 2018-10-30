@@ -16,6 +16,8 @@ StreamStats
 .. image:: https://codecov.io/gh/earthlab/streamstats/branch/master/graph/badge.svg
         :target: https://codecov.io/gh/earthlab/streamstats
 
+.. image:: https://mybinder.org/badge.svg
+        :target: https://mybinder.org/v2/gh/earthlab/streamstats/master
 
 
 
