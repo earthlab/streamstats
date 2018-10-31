@@ -4,7 +4,8 @@
 Contributing
 ============
 
-Contributions are welcome and greatly appreciated! Every little bit
+
+We welcome and greatly appreciate contributions to streamstats! Every bit
 helps, and credit will always be given.
 
 You can contribute in many ways:
