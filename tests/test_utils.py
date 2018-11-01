@@ -35,24 +35,9 @@ class StreamStatsUtilTests(VCRTestCase):
 
     @staticmethod
     def test_find_address_err_mess():
-        """Verify that the output error message provides lat and lon in the
-        correct order.
-        """
-        # Provide coordinates that will raise an error
-        lat = 40
-        lon = -200
-
+        """Error message provides lat & lon in correct order."""
         try:
-            utils.find_address(lat, lon)
-        # Grab error message
+            utils.find_address(lat=40, lon=-200)
         except ValueError as err:
             message = str(err)
-
-        # Create string for testing & implement asserts
-        lat_str = "lat=" + str(lat)
-        lon_str = "lon=" + str(lon)
-
-        assert lat_str in message, """Latitude value provided is not the
-                                      expected value"""
-        assert lon_str in message, """Longitude value provided is not the
-                                      expected value"""
+        assert ("lat=40" in message) and ("lon=-200" in message)
