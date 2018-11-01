@@ -78,7 +78,7 @@ class Watershed():
         # loop through the list of dictionaries and find the one named
         # 'globalwatershed', then return the feature dictionary from it
         for dictionary in self.data['featurecollection']:
-            if dictionary.get('name','') == 'globalwatershed':
+            if dictionary.get('name', '') == 'globalwatershed':
                 return dictionary['feature']
 
         # if we never found 'globalwatershed', something is wrong
