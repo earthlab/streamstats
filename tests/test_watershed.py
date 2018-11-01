@@ -6,11 +6,11 @@ from streamstats import Watershed
 
 
 class WatershedUnitTests(VCRTestCase):
-    '''
+    """
     Using a test class based on VCRTestCase allows automatic capture of
     web responses into "cassettes" upon the first run of a given test.
     These cassettes will be "played back" on future tests.
-    '''
+    """
 
     @staticmethod
     def test_find_watershed():
@@ -29,13 +29,15 @@ class WatershedUnitTests(VCRTestCase):
     def test_get_geojson():
         """check a few random properties of the returned geojson dict"""
         shed = Watershed(40.009631, -105.242433)
-        result = shed.get_geojson()
-        assert result['type'] == 'FeatureCollection'
-        assert result['features'][0]['properties']['I6H2Y'] == 1.263
-        assert result['features'][0]['properties']['LC11DEV'] == 100
-        assert result['features'][0]['bbox'][2] == -105.24254752674744
-        assert result['features'][0]['geometry']['coordinates'][0][00][1] \
-            == 40.006538265576346
+        result = shed.get_boundary()
+        assert 'type' in result.keys()
+        assert 'crs' in result.keys()
+        assert 'features' in result.keys()
+        assert 'properties' in result['features'][0].keys()
+        assert 'type' in result['features'][0].keys()
+        assert 'bbox' in result['features'][0].keys()
+        assert 'geometry' in result['features'][0].keys()
+        assert 'coordinates' in result['features'][0]['geometry'].keys()
 
     @staticmethod
     def test_get_geojson_raises_error():
@@ -44,18 +46,9 @@ class WatershedUnitTests(VCRTestCase):
         del shed.data['featurecollection'][1]  # delete the data we need
         message = ''
         try:
-            shed.get_geojson()
+            shed.get_boundary()
         except LookupError as error:
             message = str(error)
 
         assert message == 'Could not find "globalwatershed" in the feature' \
                           'collection.'
-
-    @staticmethod
-    def test_get_boundary():
-        """test the bounding box for a given case"""
-        shed = Watershed(40.009631, -105.242433)
-        result = shed.get_boundary()
-
-        assert result == [-105.2410132678883, 40.009688732073656,
-                          -105.24254752674744, 40.00653802187368]

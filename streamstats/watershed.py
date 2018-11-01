@@ -68,12 +68,6 @@ class Watershed():
         return huc
 
     def get_boundary(self):
-        """Return the boundary of a watershed as GeoJSON"""
-        geojson = self.get_geojson()
-        boundary = geojson['features'][0]['bbox']
-        return boundary
-
-    def get_geojson(self):
         """Return the full watershed GeoJSON as a dictionary"""
         # loop through the list of dictionaries and find the one named
         # 'globalwatershed', then return the feature dictionary from it
