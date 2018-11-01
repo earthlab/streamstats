@@ -1,7 +1,37 @@
 # -*- coding: utf-8 -*-
 """Utility functions for streamstats."""
 
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util import Retry
 import geopy
+
+
+# https://www.peterbe.com/plog/best-practice-with-retries-with-requests
+def requests_retry_session(retries=3,
+                           backoff_factor=0.3,
+                           status_forcelist=(500, 502, 504)):
+    """Make a session that backs off automatically.
+    :param retries: Number of times to retry a request
+    :type retries: int
+    :param backoff_factor: Relates to the amount of time to wait between
+        requests: {backoff factor} * (2 ^ ({number of total retries} - 1))
+    :type backoff_factor: float
+    :param status_forcelist: Status codes that prompt a retry
+    :type status_forcelist: tuple of ints
+    """
+    session = requests.Session()
+    retry = Retry(
+        total=retries,
+        read=retries,
+        connect=retries,
+        backoff_factor=backoff_factor,
+        status_forcelist=status_forcelist,
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
+    return session
 
 
 def find_address(lat, lon):
