@@ -17,9 +17,9 @@ def find_address(lat, lon):
 
     no_result_found = location_info[0] is None
     if no_result_found:
-        raise ValueError('No results were found for the point (lat={0},'
-                'lon={1})\n Are you sure this point is in the United '
-                'States?'.format(lat, lon))
+        raise ValueError("""No results were found for the point (lat={0},
+                         lon={1})\n Are you sure this point is in the United
+                         States?""".format(lat, lon))
     address = location_info.raw['address']
     assert address['country'] == 'USA', 'Point must be in US (50 states)'
     return address
