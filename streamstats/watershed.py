@@ -71,6 +71,18 @@ class Watershed():
         """Return the boundary of a watershed as GeoJSON"""
         raise NotImplementedError()
 
+    def get_geojson(self):
+        """Return the full watershed GeoJSON as a dictionary"""
+        # loop through the list of dictionaries and find the one named
+        # 'globalwatershed', then return the feature dictionary from it
+        for dictionary in self.data['featurecollection']:
+            if dictionary.get('name','') == 'globalwatershed':
+                return dictionary['feature']
+
+        # if we never found 'globalwatershed', something is wrong
+        raise LookupError('Could not find "globalwatershed" in the feature'
+                          'collection.')
+
     def available_characteristics(self):
         """List the available watershed characteristics."""
         raise NotImplementedError()
