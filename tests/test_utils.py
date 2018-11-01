@@ -41,7 +41,7 @@ class StreamStatsUtilTests(VCRTestCase):
         long = -200
 
         try:
-            find_address(lat, long)
+            utils.find_address(lat, long)
         # Grab error message
         except ValueError as err:
             message = str(err)
@@ -52,4 +52,3 @@ class StreamStatsUtilTests(VCRTestCase):
 
         assert lat_str not in message
         assert long_str not in message
-
