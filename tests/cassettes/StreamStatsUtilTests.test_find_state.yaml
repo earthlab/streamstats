@@ -1,0 +1,29 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Connection: [close]
+      Host: [nominatim.openstreetmap.org]
+      User-Agent: [streamstats]
+    method: GET
+    uri: https://nominatim.openstreetmap.org/reverse?lat=40.0076&lon=-105.2659&format=json&addressdetails=1
+  response:
+    body: {string: "{\"place_id\":\"87522624\",\"licence\":\"Data \xA9 OpenStreetMap
+        contributors, ODbL 1.0. https:\\/\\/osm.org\\/copyright\",\"osm_type\":\"way\",\"osm_id\":\"46226108\",\"lat\":\"40.0069373\",\"lon\":\"-105.266386566938\",\"display_name\":\"University
+        of Colorado Boulder (Main Campus), Wardenburg Drive, The Hill, Boulder, Boulder
+        County, Colorado, 80309, USA\",\"address\":{\"university\":\"University of
+        Colorado Boulder (Main Campus)\",\"road\":\"Wardenburg Drive\",\"neighbourhood\":\"The
+        Hill\",\"city\":\"Boulder\",\"county\":\"Boulder County\",\"state\":\"Colorado\",\"postcode\":\"80309\",\"country\":\"USA\",\"country_code\":\"us\"},\"boundingbox\":[\"40.0002788\",\"40.0136318\",\"-105.2767445\",\"-105.2588213\"]}"}
+    headers:
+      Access-Control-Allow-Methods: ['OPTIONS,GET']
+      Access-Control-Allow-Origin: ['*']
+      Connection: ['Upgrade, close']
+      Content-Type: [application/json; charset=UTF-8]
+      Date: ['Thu, 01 Nov 2018 17:01:03 GMT']
+      Expect-CT: ['max-age=0, report-uri="https://openstreetmap.report-uri.com/r/d/ct/reportOnly"']
+      Server: [Apache/2.4.29 (Ubuntu)]
+      Strict-Transport-Security: [max-age=31536000; includeSubDomains; preload]
+      Transfer-Encoding: [chunked]
+      Upgrade: [h2]
+    status: {code: 200, message: OK}
+version: 1

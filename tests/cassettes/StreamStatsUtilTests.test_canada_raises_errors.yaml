@@ -1,0 +1,30 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Connection: [close]
+      Host: [nominatim.openstreetmap.org]
+      User-Agent: [streamstats]
+    method: GET
+    uri: https://nominatim.openstreetmap.org/reverse?lat=45.5017&lon=-73.5673&format=json&addressdetails=1
+  response:
+    body: {string: "{\"place_id\":\"14174893\",\"licence\":\"Data \xA9 OpenStreetMap
+        contributors, ODbL 1.0. https:\\/\\/osm.org\\/copyright\",\"osm_type\":\"way\",\"osm_id\":\"234718666\",\"lat\":\"45.5016407\",\"lon\":\"-73.5672526\",\"display_name\":\"1100,
+        Boulevard Robert-Bourassa, Quartier des Spectacles, Ville-Marie, Montr\xE9al,
+        Agglom\xE9ration de Montr\xE9al, Montr\xE9al (06), Qu\xE9bec, H3B 4Z9, Canada\",\"address\":{\"house_number\":\"1100\",\"road\":\"Boulevard
+        Robert-Bourassa\",\"neighbourhood\":\"Quartier des Spectacles\",\"suburb\":\"Ville-Marie\",\"city\":\"Montr\xE9al\",\"county\":\"Agglom\xE9ration
+        de Montr\xE9al\",\"region\":\"Montr\xE9al (06)\",\"state\":\"Qu\xE9bec\",\"postcode\":\"H3B
+        4Z9\",\"country\":\"Canada\",\"country_code\":\"ca\"},\"boundingbox\":[\"45.5015407\",\"45.5017407\",\"-73.5673526\",\"-73.5671526\"]}"}
+    headers:
+      Access-Control-Allow-Methods: ['OPTIONS,GET']
+      Access-Control-Allow-Origin: ['*']
+      Connection: ['Upgrade, close']
+      Content-Type: [application/json; charset=UTF-8]
+      Date: ['Thu, 01 Nov 2018 17:01:00 GMT']
+      Expect-CT: ['max-age=0, report-uri="https://openstreetmap.report-uri.com/r/d/ct/reportOnly"']
+      Server: [Apache/2.4.29 (Ubuntu)]
+      Strict-Transport-Security: [max-age=31536000; includeSubDomains; preload]
+      Transfer-Encoding: [chunked]
+      Upgrade: [h2]
+    status: {code: 200, message: OK}
+version: 1
