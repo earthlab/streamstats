@@ -52,3 +52,4 @@ class StreamStatsUtilTests(VCRTestCase):
 
         assert lat_str not in message
         assert long_str not in message
+
