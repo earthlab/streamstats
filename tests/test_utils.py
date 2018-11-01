@@ -32,9 +32,3 @@ class StreamStatsUtilTests(VCRTestCase):
         """Points outside the U.S. should raise errors."""
         with pytest.raises(AssertionError):
             utils.find_address(lat=45.5017, lon=-73.5673)
-
-    @staticmethod
-    def test_address_order():
-        """Verify that the error message is raised when values are swapped."""
-        with pytest.raises(AssertionError):
-            utils.find_address(-105.2659, 40.0076)
