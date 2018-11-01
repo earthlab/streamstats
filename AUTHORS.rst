@@ -12,4 +12,5 @@ Contributors
 
 * Scott Eilerman
 * Leah Wasser
+* Jeremy Diaz
 * Nate Mietkiewicz
