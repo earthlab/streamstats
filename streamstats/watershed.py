@@ -69,7 +69,9 @@ class Watershed():
 
     def get_boundary(self):
         """Return the boundary of a watershed as GeoJSON"""
-        raise NotImplementedError()
+        geojson = self.get_geojson()
+        boundary = geojson['features'][0]['bbox']
+        return boundary
 
     def get_geojson(self):
         """Return the full watershed GeoJSON as a dictionary"""
