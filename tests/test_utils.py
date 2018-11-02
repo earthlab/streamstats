@@ -32,3 +32,12 @@ class StreamStatsUtilTests(VCRTestCase):
         """Points outside the U.S. should raise errors."""
         with pytest.raises(AssertionError):
             utils.find_address(lat=45.5017, lon=-73.5673)
+
+    @staticmethod
+    def test_find_address_err_mess():
+        """Error message provides lat & lon in correct order."""
+        try:
+            utils.find_address(lat=40, lon=-200)
+        except ValueError as err:
+            message = str(err)
+        assert ("lat=40" in message) and ("lon=-200" in message)

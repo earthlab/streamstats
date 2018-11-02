@@ -13,7 +13,7 @@ class WatershedUnitTests(VCRTestCase):
     """
 
     @staticmethod
-    def test_find_watershed():
+    def test_watershed():
         """Verify that the JSON response contains expected keys."""
         wshed = Watershed(lat=43.939, lon=-74.524)
         keys = wshed.data.keys()
@@ -52,3 +52,16 @@ class WatershedUnitTests(VCRTestCase):
 
         assert message == 'Could not find "globalwatershed" in the feature' \
                           'collection.'
+
+    @staticmethod    
+    def test_flow_stats():
+        """Verify that we get the expected flow statistics"""
+        wshed = Watershed(lat=43.939, lon=-74.524)
+        stats = wshed.get_flow_stats()
+        assert stats[0].keys() == stats[1].keys()
+
+        available_stats = wshed.available_flow_stats()
+        assert len(available_stats) == 2
+        assert len(stats) == len(available_stats)
+        assert 'Peak-Flow Statistics' in available_stats
+        assert 'Bankfull Statistics' in available_stats

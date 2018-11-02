@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """Functionality for finding watershed information for specific locations."""
 
-import requests
 from streamstats import utils
 
 
@@ -15,7 +14,6 @@ class Watershed():
     characteristics and flow statistics can also be extracted from watersheds.
     """
     base_url = "https://streamstats.usgs.gov/streamstatsservices/"
-    url = "".join((base_url, "watershed.geojson"))
 
     def __init__(self, lat, lon):
         """Initialize a Watershed object
@@ -29,8 +27,10 @@ class Watershed():
         """
         self.lat, self.lon = lat, lon
         self.address = utils.find_address(lat=lat, lon=lon)
+        self.state = utils.find_state(self.address)
         self.data = self._delineate()
         self.workspace = self.data['workspaceID']
+        self.flowstats = None
 
     def _delineate(self):
         """Find the watershed that contains a point.
@@ -41,7 +41,7 @@ class Watershed():
         :rtype dict containing watershed data
         """
         payload = {
-            'rcode': utils.find_state(self.address),
+            'rcode': self.state,
             'xlocation': self.lon,
             'ylocation': self.lat,
             'crs': 4326,
@@ -50,7 +50,8 @@ class Watershed():
             'includefeatures': True,
             'simplify': False
         }
-        response = requests.get(self.url, params=payload)
+        url = "".join((self.base_url, "watershed.geojson"))
+        response = utils.requests_retry_session().get(url, params=payload)
         response.raise_for_status()  # raises errors early
         return response.json()
 
@@ -88,9 +89,26 @@ class Watershed():
         raise NotImplementedError()
 
     def available_flow_stats(self):
-        """List the available flow statistics"""
-        raise NotImplementedError()
+        """List the available flow statistics
+
+        :rtype list of available flow statistics
+        """
+        if not self.flowstats:
+            self.get_flow_stats()
+        avail_stats = [item['StatisticGroupName'] for item in self.flowstats]
+        return avail_stats
 
     def get_flow_stats(self):
-        """Get watershed flow statistics data values."""
-        raise NotImplementedError()
+        """Get watershed flow statistics data values.
+
+        :rtype dict containing flow statistics data for a watershed
+        """
+        pars = {
+            'rcode': self.state,
+            'workspaceID': self.workspace,
+            'includeflowtypes': True
+        }
+        flow_url = "".join((self.base_url, 'flowstatistics.json'))
+        response = utils.requests_retry_session().get(flow_url, params=pars)
+        self.flowstats = response.json()
+        return self.flowstats
