@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """Tests for streamstats Watershed class."""
 
+import json
 from vcr_unittest import VCRTestCase
+import geojson
 from streamstats import Watershed
 
 
@@ -26,21 +28,15 @@ class WatershedUnitTests(VCRTestCase):
         assert str(wshed.lon) in str(wshed)
 
     @staticmethod
-    def test_get_geojson():
+    def test_get_boundary():
         """check a few random properties of the returned geojson dict"""
         shed = Watershed(40.009631, -105.242433)
         result = shed.get_boundary()
-        assert 'type' in result.keys()
-        assert 'crs' in result.keys()
-        assert 'features' in result.keys()
-        assert 'properties' in result['features'][0].keys()
-        assert 'type' in result['features'][0].keys()
-        assert 'bbox' in result['features'][0].keys()
-        assert 'geometry' in result['features'][0].keys()
-        assert 'coordinates' in result['features'][0]['geometry'].keys()
+        geojson_out = geojson.loads(json.dumps(result))
+        assert geojson_out.is_valid
 
     @staticmethod
-    def test_get_geojson_raises_error():
+    def test_get_boundary_raises_error():
         """check that if the data is bad, we get an error"""
         shed = Watershed(40.009631, -105.242433)
         del shed.data['featurecollection'][1]  # delete the data we need
@@ -53,7 +49,7 @@ class WatershedUnitTests(VCRTestCase):
         assert message == 'Could not find "globalwatershed" in the feature' \
                           'collection.'
 
-    @staticmethod    
+    @staticmethod
     def test_flow_stats():
         """Verify that we get the expected flow statistics"""
         wshed = Watershed(lat=43.939, lon=-74.524)
