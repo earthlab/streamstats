@@ -15,7 +15,7 @@ requirements = ['geopy', 'requests', 'urllib3']
 
 setup_requirements = ['pytest-runner', ]
 
-test_requirements = ['pytest', ]
+test_requirements = ['pytest', 'geojson', 'vcrpy', 'vcrpy-unittest']
 
 setup(
     author="Maxwell B. Joseph",
@@ -25,8 +25,6 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',

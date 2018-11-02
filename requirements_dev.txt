@@ -9,6 +9,7 @@ Sphinx==1.8.1
 twine==1.12.1
 vcrpy==2.0.1
 vcrpy-unittest==0.1.7
+geojson==2.4.1
 
 pytest==3.9.2
 pytest-cov==2.6.0

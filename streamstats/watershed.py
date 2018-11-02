@@ -69,8 +69,16 @@ class Watershed():
         return huc
 
     def get_boundary(self):
-        """Return the boundary of a watershed as GeoJSON"""
-        raise NotImplementedError()
+        """Return the full watershed GeoJSON as a dictionary.
+
+        :rtype dict containing GeoJSON watershed boundary
+        """
+        for dictionary in self.data['featurecollection']:
+            if dictionary.get('name', '') == 'globalwatershed':
+                return dictionary['feature']
+
+        raise LookupError('Could not find "globalwatershed" in the feature'
+                          'collection.')
 
     def available_characteristics(self):
         """List the available watershed characteristics."""
