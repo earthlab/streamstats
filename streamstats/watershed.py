@@ -69,14 +69,14 @@ class Watershed():
         return huc
 
     def get_boundary(self):
-        """Return the full watershed GeoJSON as a dictionary"""
-        # loop through the list of dictionaries and find the one named
-        # 'globalwatershed', then return the feature dictionary from it
+        """Return the full watershed GeoJSON as a dictionary.
+
+        :rtype dict containing GeoJSON watershed boundary
+        """
         for dictionary in self.data['featurecollection']:
             if dictionary.get('name', '') == 'globalwatershed':
                 return dictionary['feature']
 
-        # if we never found 'globalwatershed', something is wrong
         raise LookupError('Could not find "globalwatershed" in the feature'
                           'collection.')
 

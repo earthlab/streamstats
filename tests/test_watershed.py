@@ -30,7 +30,7 @@ class WatershedUnitTests(VCRTestCase):
     @staticmethod
     def test_get_boundary():
         """check a few random properties of the returned geojson dict"""
-        shed = Watershed(40.009631, -105.242433)
+        shed = Watershed(lat=43.939, lon=-74.524)
         result = shed.get_boundary()
         geojson_out = geojson.loads(json.dumps(result))
         assert geojson_out.is_valid
@@ -38,7 +38,7 @@ class WatershedUnitTests(VCRTestCase):
     @staticmethod
     def test_get_boundary_raises_error():
         """check that if the data is bad, we get an error"""
-        shed = Watershed(40.009631, -105.242433)
+        shed = Watershed(lat=43.939, lon=-74.524)
         del shed.data['featurecollection'][1]  # delete the data we need
         message = ''
         try:
