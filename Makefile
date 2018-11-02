@@ -72,7 +72,6 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/modules.rst
 	sphinx-apidoc -o docs/ streamstats
 	$(MAKE) -C docs clean
-	$(MAKE) -C docs doctest
 	$(MAKE) -C docs html
 	$(MAKE) -C docs linkcheck
 	$(BROWSER) docs/_build/html/index.html
