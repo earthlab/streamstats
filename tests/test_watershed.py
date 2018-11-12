@@ -34,6 +34,30 @@ class WatershedUnitTests(VCRTestCase):
         result = shed.get_boundary()
         geojson_out = geojson.loads(json.dumps(result))
         assert geojson_out.is_valid
+        
+    @staticmethod
+    def test_available_characteristics():
+        """check that requisite key names are present"""
+        shed = Watershed(lat=43.939, lon=-74.524)
+        code_key_indicator_list = ['code' in parameter.keys() for parameter in shed.parameters]
+        for indicator in code_key_indicator_list:
+            assert(indicator == True)
+        name_key_indicator_list = ['code' in parameter.keys() for parameter in shed.parameters]
+        for indicator in name_key_indicator_list:
+            assert(indicator == True)
+    
+    @staticmethod
+    def test_get_characteristics():
+        """check that no argument call does not succeed"""
+        shed = Watershed(lat=43.939, lon=-74.524)
+        try:
+            successful_output = shed.get_characteristics()
+            print('test_get_characteristics failed!')
+            raise(KeyboardInterrupt)
+        except TypeError as e:
+            str(e) == 'get_characteristics() requires a parameter code as an argument.\n' \
+                      'A list of available parameter codes can be seen by performing\n' \
+                      'available_characteristics and observing the keys (i.e left-hand side of dictionary)'
 
     @staticmethod
     def test_get_boundary_raises_error():

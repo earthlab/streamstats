@@ -31,6 +31,7 @@ class Watershed():
         self.data = self._delineate()
         self.workspace = self.data['workspaceID']
         self.flowstats = None
+        self.parameters = self.data['parameters']
 
     def _delineate(self):
         """Find the watershed that contains a point.
@@ -76,17 +77,33 @@ class Watershed():
         for dictionary in self.data['featurecollection']:
             if dictionary.get('name', '') == 'globalwatershed':
                 return dictionary['feature']
-
         raise LookupError('Could not find "globalwatershed" in the feature'
                           'collection.')
 
     def available_characteristics(self):
-        """List the available watershed characteristics."""
-        raise NotImplementedError()
-
-    def get_characteristics(self):
-        """Get watershed characteristic data values."""
-        raise NotImplementedError()
+        """List the available watershed characteristics.
+        
+        :rtype dict containing available characteristics and brief description
+        """
+        char_dict = dict((p['code'], p['name']) for p in self.parameters)
+        print('\n\nWant to know more about these characteristics?\n' \
+              'Visit the documentation at:\n' \
+              'https://streamstatsags.cr.usgs.gov/ss_defs/basin_char_defs.aspx')
+        return char_dict
+        
+    def get_characteristics(self, code_of_interest = None):
+        """Retrieve a specified watershed characteristic
+        
+        :rtype dict containing specified characteristic's data and metadata
+        """
+        if code_of_interest == None:
+            print('get_characteristics() requires a parameter code as an argument.\n' \
+                  'A list of available parameter codes can be seen by performing\n' \
+                  'available_characteristics and observing the keys (i.e left-hand side of dictionary)')
+            raise TypeError
+        else:
+            code_of_interest_data = self.parameters['code' == code_of_interest]
+            return code_of_interest_data
 
     def available_flow_stats(self):
         """List the available flow statistics
