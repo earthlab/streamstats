@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Functionality for finding watershed information for specific locations."""
 
+from collections import OrderedDict
 from streamstats import utils
 
 
@@ -26,11 +27,18 @@ class Watershed():
         :type simplify: bool
         """
         self.lat, self.lon = lat, lon
-        self.address = utils.find_address(lat=lat, lon=lon)
-        self.state = utils.find_state(self.address)
+        self.state = utils.find_state(utils.find_address(lat=lat, lon=lon))
         self.data = self._delineate()
         self.workspace = self.data['workspaceID']
         self.flowstats = None
+        self.parameters = self.data['parameters']
+
+    def __repr__(self):
+        """Get the string representation of a watershed."""
+        huc = self.get_huc()
+        huc_message = 'Watershed object with HUC%s: %s' % (len(huc), huc)
+        coord_message = 'containing lat/lon: (%s, %s)' % (self.lat, self.lon)
+        return ', '.join((huc_message, coord_message))
 
     def _delineate(self):
         """Find the watershed that contains a point.
@@ -55,13 +63,6 @@ class Watershed():
         response.raise_for_status()  # raises errors early
         return response.json()
 
-    def __repr__(self):
-        """Get the string representation of a watershed."""
-        huc = self.get_huc()
-        huc_message = 'Watershed object with HUC%s: %s' % (len(huc), huc)
-        coord_message = 'containing lat/lon: (%s, %s)' % (self.lat, self.lon)
-        return ', '.join((huc_message, coord_message))
-
     def get_huc(self):
         """Find the Hydrologic Unit Code (HUC) of the watershed."""
         watershed_point = self.data['featurecollection'][0]['feature']
@@ -76,17 +77,38 @@ class Watershed():
         for dictionary in self.data['featurecollection']:
             if dictionary.get('name', '') == 'globalwatershed':
                 return dictionary['feature']
-
         raise LookupError('Could not find "globalwatershed" in the feature'
                           'collection.')
 
-    def available_characteristics(self):
-        """List the available watershed characteristics."""
-        raise NotImplementedError()
+    def characteristics(self):
+        """List the available watershed characteristics.
 
-    def get_characteristics(self):
-        """Get watershed characteristic data values."""
-        raise NotImplementedError()
+        Details about these characteristics can be found in the StreamStats
+        docs: https://streamstatsags.cr.usgs.gov/ss_defs/basin_char_defs.aspx
+
+        :rtype OrderedDict with characteristic codes and descriptions
+        """
+        chars = OrderedDict((p['code'], p['name']) for p in self.parameters)
+        return chars
+
+    def get_characteristic(self, code=None):
+        """Retrieve a specified watershed characteristic
+
+        :param code: Watershed characteristic code to extract.
+        :type code: string
+
+        get_characteristic() requires a characteristic code as an argument.
+        Valid codes can be seen as keys in the dictionary returned
+        by the characteristics() method.
+
+        :rtype dict containing specified characteristic's data and metadata
+        """
+        keys = list(self.characteristics().keys())
+        if code not in keys:
+            raise ValueError("code must be a valid key: %s" % ', '.join(keys))
+        characteristic_index = keys.index(code)
+        characteristic_values = self.parameters[characteristic_index]
+        return characteristic_values
 
     def available_flow_stats(self):
         """List the available flow statistics
