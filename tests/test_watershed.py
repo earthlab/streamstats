@@ -2,6 +2,7 @@
 """Tests for streamstats Watershed class."""
 
 import json
+import pytest
 from vcr_unittest import VCRTestCase
 import geojson
 from streamstats import Watershed
@@ -34,30 +35,24 @@ class WatershedUnitTests(VCRTestCase):
         result = shed.get_boundary()
         geojson_out = geojson.loads(json.dumps(result))
         assert geojson_out.is_valid
-        
+
     @staticmethod
-    def test_available_characteristics():
-        """check that requisite key names are present"""
+    def test_characteristics():
+        """Check that expected dict keys exist."""
         shed = Watershed(lat=43.939, lon=-74.524)
-        code_key_indicator_list = ['code' in parameter.keys() for parameter in shed.parameters]
-        for indicator in code_key_indicator_list:
-            assert(indicator == True)
-        name_key_indicator_list = ['code' in parameter.keys() for parameter in shed.parameters]
-        for indicator in name_key_indicator_list:
-            assert(indicator == True)
-    
+        obs_keys = shed.characteristics().keys()
+        expected_keys = [p['code'] for p in shed.parameters]
+        for key in expected_keys:
+            assert key in obs_keys
+
     @staticmethod
-    def test_get_characteristics():
-        """check that no argument call does not succeed"""
+    def test_get_characteristic():
+        """Get characteristic fails with no argument, succeeds w/ valid arg."""
         shed = Watershed(lat=43.939, lon=-74.524)
-        try:
-            successful_output = shed.get_characteristics()
-            print('test_get_characteristics failed!')
-            raise(KeyboardInterrupt)
-        except TypeError as e:
-            str(e) == 'get_characteristics() requires a parameter code as an argument.\n' \
-                      'A list of available parameter codes can be seen by performing\n' \
-                      'available_characteristics and observing the keys (i.e left-hand side of dictionary)'
+        with pytest.raises(ValueError):
+            shed.get_characteristic()
+        storage = shed.get_characteristic('STORAGE')
+        assert storage.get('name') == 'Percent Storage'
 
     @staticmethod
     def test_get_boundary_raises_error():
@@ -77,11 +72,11 @@ class WatershedUnitTests(VCRTestCase):
     def test_flow_stats():
         """Verify that we get the expected flow statistics"""
         wshed = Watershed(lat=43.939, lon=-74.524)
-        stats = wshed.get_flow_stats()
-        assert stats[0].keys() == stats[1].keys()
-
         available_stats = wshed.available_flow_stats()
         assert len(available_stats) == 2
-        assert len(stats) == len(available_stats)
         assert 'Peak-Flow Statistics' in available_stats
         assert 'Bankfull Statistics' in available_stats
+
+        stats = wshed.get_flow_stats()
+        assert stats[0].keys() == stats[1].keys()
+        assert len(stats) == len(available_stats)

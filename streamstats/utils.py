@@ -9,14 +9,14 @@ import geopy
 
 # https://www.peterbe.com/plog/best-practice-with-retries-with-requests
 def requests_retry_session(retries=3,
-                           backoff_factor=0.3,
+                           backoff=0.3,
                            status_forcelist=(500, 502, 504)):
     """Make a session that backs off automatically.
+
     :param retries: Number of times to retry a request
     :type retries: int
-    :param backoff_factor: Relates to the amount of time to wait between
-        requests: {backoff factor} * (2 ^ ({number of total retries} - 1))
-    :type backoff_factor: float
+    :param backoff: Interval: {backoff} * (2^({number of total retries} - 1))
+    :type backoff: float
     :param status_forcelist: Status codes that prompt a retry
     :type status_forcelist: tuple of ints
     """
@@ -25,7 +25,7 @@ def requests_retry_session(retries=3,
         total=retries,
         read=retries,
         connect=retries,
-        backoff_factor=backoff_factor,
+        backoff_factor=backoff,
         status_forcelist=status_forcelist,
     )
     adapter = HTTPAdapter(max_retries=retry)
@@ -36,6 +36,7 @@ def requests_retry_session(retries=3,
 
 def find_address(lat, lon):
     """Find the address associated with a lat/lon pair.
+
     :param lat: Latitude of point in decimal degrees
     :type lat: float
     :param lon: Longitude of point in decimal degrees
