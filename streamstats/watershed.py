@@ -12,7 +12,7 @@ class Watershed():
     units. Watersheds in the 50 U.S. states can be found using lat/lon
     lookups, along with information about the watershed including its HUC code
     and a GeoJSON representation of the polygon of a watershed. Basin
-    characteristics and flow statistics can also be extracted from watersheds.
+    characteristics can also be extracted from watersheds.
     """
     base_url = "https://streamstats.usgs.gov/streamstatsservices/"
 
@@ -30,7 +30,6 @@ class Watershed():
         self.state = utils.find_state(utils.find_address(lat=lat, lon=lon))
         self.data = self._delineate()
         self.workspace = self.data['workspaceID']
-        self.flowstats = None
         self.parameters = self.data['parameters']
 
     def __repr__(self):
@@ -109,28 +108,3 @@ class Watershed():
         characteristic_index = keys.index(code)
         characteristic_values = self.parameters[characteristic_index]
         return characteristic_values
-
-    def available_flow_stats(self):
-        """List the available flow statistics
-
-        :rtype list of available flow statistics
-        """
-        if not self.flowstats:
-            self.get_flow_stats()
-        avail_stats = [item['StatisticGroupName'] for item in self.flowstats]
-        return avail_stats
-
-    def get_flow_stats(self):
-        """Get watershed flow statistics data values.
-
-        :rtype dict containing flow statistics data for a watershed
-        """
-        pars = {
-            'rcode': self.state,
-            'workspaceID': self.workspace,
-            'includeflowtypes': True
-        }
-        flow_url = "".join((self.base_url, 'flowstatistics.json'))
-        response = utils.requests_retry_session().get(flow_url, params=pars)
-        self.flowstats = response.json()
-        return self.flowstats
