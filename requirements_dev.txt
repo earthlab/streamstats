@@ -1,6 +1,6 @@
 pip==18.1
 bumpversion==0.5.3
-wheel==0.32.2
+wheel==0.32.3
 flake8==3.6.0
 pylint==2.1.1
 tox==3.5.2
