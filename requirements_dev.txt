@@ -13,5 +13,5 @@ geojson==2.4.1
 
 pytest==4.1.1
 pluggy==0.8.1
-pytest-cov==2.6.0
+pytest-cov==2.6.1
 pytest-runner==4.2
