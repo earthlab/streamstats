@@ -5,7 +5,7 @@ flake8==3.6.0
 pylint==2.2.2
 tox==3.7.0
 coverage==4.5.2
-Sphinx==1.8.1
+Sphinx==1.8.3
 twine==1.12.1
 vcrpy==2.0.1
 vcrpy-unittest==0.1.7
