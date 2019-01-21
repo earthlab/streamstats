@@ -1,17 +1,17 @@
 pip==18.1
 bumpversion==0.5.3
-wheel==0.32.2
+wheel==0.32.3
 flake8==3.6.0
-pylint==2.1.1
-tox==3.5.2
-coverage==4.5.1
-Sphinx==1.8.1
+pylint==2.2.2
+tox==3.7.0
+coverage==4.5.2
+Sphinx==1.8.3
 twine==1.12.1
 vcrpy==2.0.1
 vcrpy-unittest==0.1.7
 geojson==2.4.1
 
-pytest==4.0.0
-pluggy==0.8.0
-pytest-cov==2.6.0
+pytest==4.1.1
+pluggy==0.8.1
+pytest-cov==2.6.1
 pytest-runner==4.2
