@@ -11,7 +11,7 @@ vcrpy==2.0.1
 vcrpy-unittest==0.1.7
 geojson==2.4.1
 
-pytest==4.1.1
+pytest==4.2.0
 pluggy==0.8.1
 pytest-cov==2.6.1
 pytest-runner==4.2
