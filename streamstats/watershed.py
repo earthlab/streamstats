@@ -34,7 +34,7 @@ class Watershed():
 
     def __repr__(self):
         """Get the string representation of a watershed."""
-        huc = self.get_huc()
+        huc = self.huc
         huc_message = 'Watershed object with HUC%s: %s' % (len(huc), huc)
         coord_message = 'containing lat/lon: (%s, %s)' % (self.lat, self.lon)
         return ', '.join((huc_message, coord_message))
@@ -62,13 +62,15 @@ class Watershed():
         response.raise_for_status()  # raises errors early
         return response.json()
 
-    def get_huc(self):
+    @property
+    def huc(self):
         """Find the Hydrologic Unit Code (HUC) of the watershed."""
         watershed_point = self.data['featurecollection'][0]['feature']
         huc = watershed_point['features'][0]['properties']['HUCID']
         return huc
 
-    def get_boundary(self):
+    @property
+    def boundary(self):
         """Return the full watershed GeoJSON as a dictionary.
 
         :rtype dict containing GeoJSON watershed boundary
@@ -79,6 +81,7 @@ class Watershed():
         raise LookupError('Could not find "globalwatershed" in the feature'
                           'collection.')
 
+    @property
     def characteristics(self):
         """List the available watershed characteristics.
 
@@ -102,7 +105,7 @@ class Watershed():
 
         :rtype dict containing specified characteristic's data and metadata
         """
-        keys = list(self.characteristics().keys())
+        keys = list(self.characteristics.keys())
         if code not in keys:
             raise ValueError("code must be a valid key: %s" % ', '.join(keys))
         characteristic_index = keys.index(code)
