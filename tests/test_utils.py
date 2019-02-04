@@ -29,10 +29,3 @@ def test_canada_raises_errors():
     """Points outside the U.S. should raise errors."""
     with pytest.raises(AssertionError):
         utils.find_address(lat=45.5017, lon=-73.5673)
-
-
-@pytest.mark.vcr()
-def test_find_address_err_mess():
-    """Error message provides coordinates."""
-    with pytest.raises(ValueError, match='lat=40'):
-        utils.find_address(lat=40, lon=-200)
