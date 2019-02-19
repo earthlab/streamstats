@@ -1,6 +1,6 @@
 bumpversion==0.5.3
 coverage==4.5.2
-flake8==3.7.5
+flake8==3.7.6
 geojson==2.4.1
 pip==19.0.2
 pluggy==0.8.1
