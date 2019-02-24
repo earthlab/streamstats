@@ -3,7 +3,7 @@ coverage==4.5.2
 flake8==3.7.6
 geojson==2.4.1
 pip==19.0.3
-pluggy==0.8.1
+pluggy==0.9.0
 pytest==4.3.0
 pytest-cov==2.6.1
 pytest-runner==4.2
