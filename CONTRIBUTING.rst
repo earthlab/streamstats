@@ -58,18 +58,31 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `streamstats` for local development.
+Ready to contribute? Here's how to set up StreamStats for local development.
 
 1. Fork the `streamstats` repo on GitHub.
 2. Clone your fork locally::
 
     $ git clone git@github.com:your_name_here/streamstats.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy into a new environment.
+
+If you have virtualenvwrapper installed::
 
     $ mkvirtualenv streamstats
+
+If you are a conda user::
+
+
+    $ conda create -n streamstats python=3
+    $ conda activate streamstats
+
+Then install StreamStats::
+
     $ cd streamstats/
-    $ python setup.py develop
+    $ pip install -r requirements.txt
+    $ pip install -r requirements_dev.txt
+    $ pip install -e .
 
 4. Create a branch for local development::
 
@@ -80,10 +93,8 @@ Ready to contribute? Here's how to set up `streamstats` for local development.
 5. When you're done making changes, check that your changes pass flake8 and the
    tests, including testing other Python versions with tox::
 
-    $ python setup.py test or py.test
+    $ pytest
     $ tox
-
-   To get tox, just pip install it into your virtualenv.
 
 6. Commit your changes and push your branch to GitHub::
 
