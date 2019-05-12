@@ -11,4 +11,4 @@ pytest-vcr==1.0.2
 Sphinx==2.0.1
 tox==3.9.0
 twine==1.12.1
-wheel==0.33.3
+wheel==0.33.4
