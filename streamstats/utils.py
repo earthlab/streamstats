@@ -52,7 +52,7 @@ def find_address(lat, lon):
                          lon={1})\n Are you sure this point is in the United
                          States?""".format(lat, lon))
     address = location_info.raw['address']
-    assert address['country'] == 'USA', 'Point must be in US (50 states)'
+    assert address['country_code'] == 'us', 'Point must be in US (50 states)'
     return address
 
 
