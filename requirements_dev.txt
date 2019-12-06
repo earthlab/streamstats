@@ -1,4 +1,4 @@
-bumpversion==0.5.3
+bump2version==0.5.11
 coverage==4.5.4
 flake8==3.7.9
 geojson==2.5.0
