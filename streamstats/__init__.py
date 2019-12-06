@@ -5,4 +5,4 @@ from .watershed import Watershed  # noqa
 
 __author__ = """Maxwell B. Joseph"""
 __email__ = 'maxwell.b.joseph@colorado.edu'
-__version__ = '0.1.3'
+__version__ = '0.1.4'
