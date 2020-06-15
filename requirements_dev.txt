@@ -8,7 +8,7 @@ pytest==5.4.3
 pytest-cov==2.10.0
 pytest-runner==5.2
 pytest-vcr==1.0.2
-Sphinx==3.1.0
+Sphinx==3.1.1
 tox==3.15.2
 twine==3.1.1
 wheel==0.34.2
