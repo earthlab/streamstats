@@ -6,9 +6,6 @@ StreamStats
 .. image:: https://img.shields.io/pypi/v/streamstats.svg
         :target: https://pypi.org/project/streamstats/
 
-.. image:: https://api.travis-ci.org/earthlab/streamstats.svg?branch=master
-        :target: https://travis-ci.org/earthlab/streamstats
-
 .. image:: https://readthedocs.org/projects/streamstats-python/badge/?version=latest
         :target: https://streamstats-python.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
