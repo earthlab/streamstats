@@ -11,7 +11,7 @@ StreamStats
         :alt: Documentation Status
 
 .. image:: https://codecov.io/gh/earthlab/streamstats/branch/master/graph/badge.svg
-        :target: https://codecov.io/gh/earthlab/streamstats
+        :target: https://app.codecov.io/gh/earthlab/streamstats
 
 .. image:: https://static.mybinder.org/badge.svg
         :target: https://mybinder.org/v2/gh/earthlab/streamstats/master
