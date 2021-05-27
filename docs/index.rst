@@ -8,6 +8,7 @@ Welcome to StreamStats's documentation!
    readme
    installation
    usage
+   Examples Gallery <gallery_vignettes/index>
    modules
    contributing
    authors

@@ -66,7 +66,7 @@ coverage: ## check code coverage quickly with the default Python
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
-docs: ## generate Sphinx HTML documentation, including API docs
+docs: docs/*.rst docs/conf.py docs/Makefile streamstats/*.py *.rst examples/*.py ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/streamstats.rst
 	rm -f docs/modules.rst
 	sphinx-apidoc -o docs/ streamstats
