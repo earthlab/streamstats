@@ -5,10 +5,10 @@ View Watershed Characterisitics Using StreamStats
 ###########################################################################
 # Import Packages
 # ----------------
-# To get started, download the necessary Python packages. The``GeoPandas``
+# To get started, download the necessary Python packages. The ``GeoPandas``
 # package is an open source project that assists in working with geospatial data
 # in Python. Learn more about
-# 'GeoPandas<https://geopandas.org/gallery/index.html>'_.
+# `GeoPandas <https://geopandas.org/gallery/index.html>`_.
 
 import streamstats
 import geopandas as gpd
@@ -41,9 +41,7 @@ ws.huc
 # The function ``ws.characteristics`` will return the available basin
 # characteristics for the identified watershed.In order to return information
 # on a specific characteristic, use function
-# ``ws.get_characteristic('StatLabel')``.
-
-# 'Learn more<https://streamstatsags.cr.usgs.gov/ss_defs/basin_char_defs.aspx>'_
+# ``ws.get_characteristic('StatLabel')``. `Learn more <https://streamstatsags.cr.usgs.gov/ss_defs/basin_char_defs.aspx>`_
 # about StreamStats Basin Characteristic Definitions.
 
 # Available characteristics
