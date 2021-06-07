@@ -49,7 +49,9 @@ ws.boundary['crs']
 
 ws.boundary
 poly = gpd.GeoDataFrame.from_features(ws.boundary["features"], crs="EPSG:4326")
-poly.plot(figsize=(20, 10), alpha=0.5, edgecolor='k', legend=True);
+ax = poly.plot(figsize=(20, 10), alpha=0.5, edgecolor='k', legend=True)
+ax.set_title("Single Watershed", fontsize=30, fontweight = 'bold')
+ax.set_axis_off()
 
 ###########################################################################
 # Display multiple watersheds
@@ -78,6 +80,7 @@ poly2 = gpd.GeoDataFrame.from_features(
 # to explore additional options for customizing maps and plots with geopandas.
 
 ax = poly1.plot(figsize=(20, 10), alpha=0.5, edgecolor='k', legend=True)
-poly2.plot(figsize=(20, 10), alpha=0.5, edgecolor='k', legend=True, ax=ax);
-
+poly2.plot(figsize=(20, 10), alpha=0.5, edgecolor='k', legend=True, ax=ax)
+ax.set_title("Multiple Watersheds", fontsize=30, fontweight='bold')
+ax.set_axis_off()
 ###########################################################################
