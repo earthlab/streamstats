@@ -65,6 +65,8 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/gallery_vignettes/
+
 
 # PyBuilder
 target/
