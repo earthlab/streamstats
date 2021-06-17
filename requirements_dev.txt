@@ -8,7 +8,7 @@ pytest==6.2.4
 pytest-cov==2.11.1
 pytest-runner==5.3.1
 pytest-vcr==1.0.2
-Sphinx==4.0.1
+Sphinx==4.0.2
 sphinx-autobuild==2021.3.14
 sphinx_gallery==0.8.2
 tox==3.23.1
