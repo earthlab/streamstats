@@ -21,7 +21,6 @@ Python package for interfacing with the USGS StreamStats API.
 
 - Free software: MIT license
 - Documentation: https://streamstats-python.readthedocs.io/en/latest/
-- GitHub: https://github.com/earthlab/streamstats
 
 Features
 ~~~~~~~~~
@@ -43,7 +42,7 @@ Stable release
 --------------
 To install StreamStats via ``pip`` use:
 
-.. code-block:: python
+.. code-block:: console
 
     $ pip install streamstats
 
@@ -67,13 +66,13 @@ The sources for StreamStats can be downloaded from the `GitHub repository <https
 
 You can either clone the public repository:
 
-.. code-block:: python
+.. code-block:: console
 
     $ git clone git://github.com/earthlab/streamstats
 
 Once you have a copy of the source, you can install it with:
 
-.. code-block:: python
+.. code-block:: console
 
     $ python setup.py install
 
@@ -85,7 +84,7 @@ The steps to set up StreamStats for local development are as follows:
 1. Fork the streastats repo on GitHub
 2. Clone your fork locally:
 
-.. code-block:: python
+.. code-block:: console
 
     $ git clone git://github.com:your_name_here/streamstats.git
 
@@ -93,14 +92,14 @@ The steps to set up StreamStats for local development are as follows:
 
 If you have virutalenvwrapper installed:
 
-.. code-block:: python
+.. code-block:: console
 
     $ mkvirtualenv streamstats
 
 
 If you are using conda:
 
-.. code-block:: python
+.. code-block:: console
 
     $ conda create -n streamstats python=3
     $ conda activate streamstats
@@ -108,7 +107,7 @@ If you are using conda:
 
 Then intsall StreamStats:
 
-.. code-block:: python
+.. code-block:: console
 
     $ cd streamstats/
     $ pip install -r requirements.txt
@@ -118,7 +117,7 @@ Then intsall StreamStats:
 
 4. Create a branch for local development:
 
-.. code-block:: python
+.. code-block:: console
 
     $ git checkout -b name-of-your-bugfix/feature
 
@@ -128,7 +127,7 @@ Now you can make your changes locally
 5. When your changes are complete, check that your changes pass flake8 and the tests,
 including other Python versions with tox:
 
-.. code-block:: python
+.. code-block:: console
 
     $ pytest
     $ tox
@@ -136,7 +135,7 @@ including other Python versions with tox:
 
 6. Commit your changes and push your branch to GitHub:
 
-.. code-block:: python
+.. code-block:: console
 
     $ git add
     $ git commit -m "Your detailed description of your changes"
