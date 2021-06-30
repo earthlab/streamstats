@@ -105,7 +105,7 @@ If you are using conda:
     $ conda activate streamstats
 
 
-Then intsall StreamStats:
+Then install StreamStats:
 
 .. code-block:: console
 
