@@ -5,6 +5,9 @@ StreamStats
 .. image:: https://img.shields.io/pypi/v/streamstats.svg
         :target: https://pypi.org/project/streamstats/
 
+.. image:: https://img.shields.io/pypi/dm/streamstats.svg?color=purple&label=pypi%20downloads&style=plastic
+        :target: https://img.shields.io/pypi/dm/streamstats.svg?color=purple&label=pypi%20downloads&style=plastic
+
 .. image:: https://readthedocs.org/projects/streamstats-python/badge/?version=latest
         :target: https://streamstats-python.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
@@ -163,6 +166,7 @@ Contributors
 - `Leah Wasser <https://github.com/lwasser>`_
 - `Jeremy Diaz <https://github.com/jdiaz4302>`_
 - `Nate Mietkiewicz <https://github.com/natemietk>`_
+- `Nathan Korinek <https://github.com/nkorinek>`_
 - `Ally Fitts <https://github.com/aefitts>`_
 
 
