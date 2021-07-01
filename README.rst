@@ -1,9 +1,8 @@
 StreamStats
 ===========
 
-
-.. image:: https://img.shields.io/pypi/v/streamstats.svg
-        :target: https://pypi.org/project/streamstats/
+.. image:: https://img.shields.io/pypi/v/streamstats.svg?color=purple&style=plastic
+        :target: https://img.shields.io/pypi/v/streamstats.svg?color=purple&style=plastic
 
 .. image:: https://img.shields.io/pypi/dm/streamstats.svg?color=purple&label=pypi%20downloads&style=plastic
         :target: https://img.shields.io/pypi/dm/streamstats.svg?color=purple&label=pypi%20downloads&style=plastic
